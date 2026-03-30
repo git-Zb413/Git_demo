@@ -1,0 +1,122 @@
+原文链接：https://blog.csdn.net/qtiao/article/details/97783243
+
+git config --global user.name '你的用户名'  
+git config --global user.email '你的邮箱'
+
+我的：
+git config --global user.name git-Zb413
+git config --global user.email 2517446365@qq.com
+
+
+git init：初始化一个git仓库
+    如果要在指定的目录下生成仓库，则指令如下：
+git init newDir
+
+git clone：clone一个git仓库
+
+git clone <url> [directory]
+
+url为git仓库地址，directory为本地目录
+
+比如，要克隆某个Git 代码仓库，可以用下面的命令：
+git clone git://github.com/schacon/grit.git
+
+执行完成之后会在当前目录下生成仓库，如果要指定目录下生成，则可以在后面加一个具体的位置路径，如
+
+git clone git://github.com/schacon/grit.git newgit
+
+git config：配置信息
+git add：添加文件到缓存命令
+git status：查看文件的状态命令
+git diff：查看更新的详细信息命令
+git commit：提交命令
+git reset HEAD：取消缓存命令
+git rm：删除命令
+git mv：移动或重命名命令
+
+
+
+git add 命令可将文件添加到缓存，如新项目中，添加所有文件很普遍，可以使用如下命令：
+git add .
+
+当然我们也可以指定某一类文件，如将java文件添加到缓存中，可以使用如下命令：
+git add *.java
+
+使用 git status 命令来查看相关文件的状态，直接执行如下命令：
+git status
+
+可以得到三种处理情况：
+
+暂存文件的命令：git add <文件名>
+放弃未暂存文件的修改命令：git checkout – <文件名>
+将被修改的文件暂存并提交的命令：git commit -a
+
+也可以使用 git status -s 来查看简写的状态，
+M - 被修改，A - 被添加，D - 被删除，R - 重命名，?? - 未被跟踪 等等。
+
+执行 git diff  来查看更新的详细信息，与git status不同的是，git status只显示更新的状态，
+而 git diff 可以显示已写入缓存与已修改但尚未写入缓存的改动的区别具体的详细信息。
+
+尚未缓存的改动：git diff
+查看已缓存的改动： git diff --cached
+查看已缓存的与未缓存的所有改动：git diff HEAD
+显示摘要而非整个 diff：git diff --stat
+
+git commit 将缓存区内容添加到仓库中，可以在后面加-m选项，以在命令行中提供提交注释，格式如下：
+
+git commit -m "第一次版本提交"
+
+如果你觉得 每次 commit之前要add一下，想跳过add这一步，可以直接使用 -a选项,如：
+
+git commit -am "第一次版本提交"
+
+git reset HEAD 命令用于取消已缓存的内容，如我们要取消已提交的test.txt文件，可以如下使用：
+
+git reset HEAD test.txt
+
+执行完之后，再使用commit提交时，test.txt文件不会被提交。
+
+git rm
+如果只是简单地从工作目录中手工删除文件，运行 git status 时就会在 Changes not staged for commit 的提示。
+要从 Git 中移除某个文件，就必须要从已跟踪文件清单中移除，然后提交。可以如下使用：
+
+git rm <file>
+
+如果删除之前修改过并且已经放到暂存区域的话，则必须要用强制删除选项 -f
+
+git rm -f <file>
+
+如果把文件从暂存区域移除，但仍然希望保留在当前工作目录中，换句话说，仅是从跟踪清单中删除，使用 --cached 选项即可
+
+git rm --cached <file>
+
+可以递归删除，即如果后面跟的是一个目录做为参数，则会递归删除整个目录中的所有子目录和文件：
+
+git rm –r *
+
+git mv 
+命令用于移动或重命名一个文件、目录、软连接，如要将一个test.txt文件重命名为newtest.txt，则可以使用如下命令：
+
+git mv test.txt newtest.txt
+
+
+Git的分支管理
+  几乎每种版本控制系统都支持分支管理，使用分支我们可以从主干中分离出来，然后继续开发，不影响主干。
+下面介绍一下Git中分支常用的命令：
+
+git branch：查看分支命令
+git branch (branchname)：创建分支命令
+git checkout (branchname)：切换分支命令
+git merge：合并分支命令
+git branch -d (branchname)：删除分支命令
+
+Git 远程仓库
+ 前面我们使用到的 Git 命令都是在本地执行，如果你想通过 Git 分享你的代码或者与其他开发人员合作。 你就需要将数据放到一台其他开发人员能够连接的服务器上。本本将使用 Github 作为远程仓库，来介绍Git 远程仓库的使用。
+下面介绍远程仓库常用的几种指令：
+
+git remote add：添加远程仓库
+git remote：查看当前的远程仓库
+git fetch、git pull：提取远程仓仓库
+git push：推送到远程仓库
+git remote rm：删除远程仓库
+
