@@ -6,8 +6,8 @@ git config --global user.name '你的用户名'
 git config --global user.email '你的邮箱'
 
 我的：
-git config --global user.name git-Zb413
-git config --global user.email 2517446365@qq.com
+git config --global user.name 8888888888
+git config --global user.email 8888888888
 
 
 git init：初始化一个git仓库
